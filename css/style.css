@@ -20,9 +20,20 @@ section.background {
     background-color: #DCDBD2;
 }
 
+.img-prof img {
+    height: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+i,
+.my-profile {
+    cursor: pointer;
+}
+
 /***************************************/
 
-/* Main content */
+/* MAIN CONTENT */
 .my-box {
     position: absolute;
     top: 50%;
@@ -38,9 +49,6 @@ section.background {
 .col-contacts {
     width: 40%;
     height: 100%;
-
-    /* debug */
-    border-right: 1px solid black;
 }
 
 .my-container-contacts {
@@ -49,14 +57,7 @@ section.background {
 
 header.header-contacts {
     width: 100%;
-
-    /* altezza fissa dell'header */
     height: 70px;
-
-    justify-content: space-between;
-
-    /* debug */
-    background-color: aquamarine;
 }
 
 .notifications {
@@ -66,6 +67,25 @@ header.header-contacts {
     padding: 20px;
     display: flex;
     align-items: center;
+}
+
+.notifications .img-bell {
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.contact-item {
+    height: 15%;
+    cursor: pointer;
+}
+
+.item-active {
+    background-color: #E9EBEB;
 }
 
 nav.navbar {
@@ -78,4 +98,29 @@ nav.navbar {
 .col-chat {
     width: 60%;
     height: 100%;
+}
+
+header.header-chat {
+    height: 70px;
+}
+
+.body-chat {
+    height: calc(100% - 70px - 70px);
+    background-color: #E5DDD5;
+    display: flex;
+    flex-direction: column;
+}
+
+.sent-mess {
+    background-color: #D5F9BA;
+    align-self: flex-end;
+}
+
+.received-mess {
+    background-color: #FFFFFF;
+    align-self: flex-start;
+}
+
+.mess-bar {
+    height: 70px;
 }

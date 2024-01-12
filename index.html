@@ -35,77 +35,174 @@
             </section>
 
             <!-- Main content -->
-            <div class="my-box">
-
+            <div class="my-box" id="app">
                 <div class="col-contacts">
                     <div class="my-container-contacts">
+                        <aside class="h-100">
 
-                        <header class="header-contacts d-flex">
+                            <header class="header-contacts d-flex py-2 align-items-center">
+                                <div class="my-profile h-100 ps-2">
+                                    <div class="img-prof h-100">
+                                        <img src="img/avatar_1.jpg" alt="">
+                                    </div>
+                                </div>
 
-                            <div class="my-profile h-100">
-                                1 foto profilo
+                                <div class="ps-2 fw-bold flex-grow-1">
+                                    Claudio
+                                </div>
+
+                                <div class="options-my-profile">
+                                    <span>
+                                        <i class="fa-solid fa-circle-notch fs-3" style="color: #c3c6d1;"></i>
+                                    </span>
+
+                                    <span class="mx-3">
+                                        <i class="fa-solid fa-message fs-3" style="color: #c3c6d1;"></i>
+                                    </span>
+
+                                    <span class="pe-3">
+                                        <i class="fa-solid fa-ellipsis-vertical fs-3" style=" color: #c3c6d1;"></i>
+                                    </span>
+                                </div>
+                            </header>
+
+                            <div class="notifications">
+                                <div class="img-bell">
+                                    <i class="fa-solid fa-bell-slash fa-lg" style=" color: #c3c6d1;"></i>
+                                </div>
+
+                                <div class="notifications-area ps-3">
+                                    <div>
+                                        Ricevi notifiche dei tuoi messaggi
+                                    </div>
+
+                                    <div>
+                                        <a href="">
+                                            Attiva notifiche desktop
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="options-my-profile h-100">
-                                2 opzioni
+                            <nav class="navbar bg-body-tertiary p-1">
+                                <div class="container-fluid">
+                                    <form class="d-flex align-items-center w-100" role="search">
+                                        <button class="border-0 bg-light">
+                                            <span class="pe-3"><i class="fa-solid fa-magnifying-glass fs-3"
+                                                    style="color: #c3c6d1;"></i></span>
+                                        </button>
+                                        <input class="form-control me-2" type="search"
+                                            placeholder="Cerca o inizia una nuova chat" aria-label="Search">
+                                    </form>
+                                </div>
+                            </nav>
+
+                            <div class="list-contacts h-100 overflow-y-auto bg-light">
+
+                                <div v-for="(elem, i) in contacts" :class="i == activeIndex ? 'item-active' : ''"
+                                    class="contact-item d-flex p-2">
+                                    <div class="img-prof">
+                                        <img :src="elem.avatar" :alt="elem.name">
+                                    </div>
+
+                                    <div class="name-contact flex-grow-1 ps-3">
+                                        <div class="name fw-bold">
+                                            {{ elem.name }}
+                                        </div>
+
+                                        <div class="last-message-received text-body-tertiary">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="time">
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </aside>
+                    </div>
+                </div>
+
+                <!-- --------------------------------------------------------------- -->
+
+                <div class="col-chat">
+                    <div class="my-container-chat h-100">
+
+                        <header class="header-chat d-flex align-items-center p-2">
+
+                            <div class="img-prof h-100">
+                                <img src="img/avatar_2.jpg" alt="">
+                            </div>
+
+                            <div class="flex-grow-1 ps-2">
+                                <div class="fw-bold">
+                                    Fabio
+                                </div>
+
+                                <div class="text-body-tertiary">
+                                    Ultimo accesso oggi alle 12:00
+                                </div>
+                            </div>
+
+                            <div class="options-contact">
+                                <span>
+                                    <i class="fa-solid fa-magnifying-glass fs-3" style="color: #c3c6d1;"></i>
+                                </span>
+
+                                <span class="mx-3">
+                                    <i class="fa-solid fa-paperclip fs-3" style="color: #c3c6d1;"></i>
+                                </span>
+
+                                <span class="pe-3">
+                                    <i class="fa-solid fa-ellipsis-vertical fs-3" style=" color: #c3c6d1;"></i>
+                                </span>
                             </div>
 
                         </header>
 
-                        <div class="notifications">
+                        <div class="body-chat px-5 overflow-y-auto pt-5">
 
-                            <div class="img-bell">
-                                bell
-                            </div>
-
-                            <div class="notifications-area ps-3">
+                            <div class="sent-mess text-end mb-3">
                                 <div>
-                                    Ricevi notifiche dei tuoi messaggi
+                                    mess
                                 </div>
 
                                 <div>
-                                    <a href="">
-                                        Attiva notifiche desktop
-                                    </a>
+                                    12.00
+                                </div>
+                            </div>
+
+                            <div class="received-mess text-start mb-3">
+                                <div>
+                                    mess
+                                </div>
+
+                                <div>
+                                    12.00
                                 </div>
                             </div>
 
                         </div>
 
-                        <nav class="navbar bg-body-tertiary p-1">
-                            <div class="container-fluid">
-                                <form class="d-flex align-items-center w-100" role="search">
-                                    <button class="border-0 bg-light">
-                                        <span class="pe-3"><i class="fa-solid fa-magnifying-glass fs-3"
-                                                style="color: #c3c6d1;"></i></span>
-                                    </button>
-                                    <input class="form-control me-2" type="search"
-                                        placeholder="Cerca o inizia una nuova chat" aria-label="Search">
-                                </form>
+                        <div class="mess-bar d-flex align-items-center">
+                            <div class="px-3">
+                                <i class="fa-regular fa-face-smile fs-3" style="color: #181d26;"></i>
                             </div>
-                        </nav>
 
-                        <div class="list-contacts h-100">
+                            <div class="flex-grow-1">
+                                <input class="w-100 border-0 py-2" type="text" placeholder="Scrivi un messaggio">
+                            </div>
 
-                            <ul>
-                                <li class="contacts-item">
-
-                                </li>
-                            </ul>
-
+                            <div class="px-3">
+                                <i class="fa-solid fa-microphone fs-3" style="color: #262c36;"></i>
+                            </div>
                         </div>
 
                     </div>
                 </div>
-
-                <div class="col-chat">
-                    <div class="my-container-chat">
-
-
-
-                    </div>
-                </div>
-
             </div>
 
         </main>
