@@ -169,5 +169,17 @@ createApp({
             ]
 
         }
+    },
+    methods: {
+        setActive(index) {
+            this.activeIndex = index;
+        },
+        setMessages(element) {
+            if (element.status == 'sent') {
+                return 'sent'
+            } else {
+                return 'received'
+            }
+        }
     }
 }).mount('#app')

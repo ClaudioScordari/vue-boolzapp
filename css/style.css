@@ -79,6 +79,10 @@ header.header-contacts {
     cursor: pointer;
 }
 
+nav.navbar {
+    height: 50px;
+}
+
 .contact-item {
     height: 15%;
     cursor: pointer;
@@ -88,8 +92,9 @@ header.header-contacts {
     background-color: #E9EBEB;
 }
 
-nav.navbar {
-    height: 50px;
+.last-access {
+    text-align: right;
+    font-size: 15px;
 }
 
 /***************************************/
@@ -111,14 +116,16 @@ header.header-chat {
     flex-direction: column;
 }
 
-.sent-mess {
+.sent {
     background-color: #D5F9BA;
     align-self: flex-end;
+    text-align: right;
 }
 
-.received-mess {
+.received {
     background-color: #FFFFFF;
     align-self: flex-start;
+    text-align: left;
 }
 
 .mess-bar {

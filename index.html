@@ -99,25 +99,28 @@
 
                             <div class="list-contacts h-100 overflow-y-auto bg-light">
 
-                                <div v-for="(elem, i) in contacts" :class="i == activeIndex ? 'item-active' : ''"
-                                    class="contact-item d-flex p-2">
+                                <div @click="setActive(i)" v-for="(elem, i) in contacts"
+                                    :class="i == activeIndex ? 'item-active' : ''" class="contact-item d-flex p-2">
+
                                     <div class="img-prof">
                                         <img :src="elem.avatar" :alt="elem.name">
                                     </div>
 
-                                    <div class="name-contact flex-grow-1 ps-3">
+                                    <div class="name-contact ps-3 flex-grow-1">
                                         <div class="name fw-bold">
                                             {{ elem.name }}
                                         </div>
 
-                                        <div class="last-message-received text-body-tertiary">
-
+                                        <div class=" last-message-received
+                                            text-body-tertiary">
+                                            Ultimo messaggio ricevuto
                                         </div>
                                     </div>
 
-                                    <div class="time">
-
+                                    <div class="last-access text-body-tertiary">
+                                        12:00
                                     </div>
+
                                 </div>
 
                             </div>
@@ -128,7 +131,7 @@
 
                 <!-- --------------------------------------------------------------- -->
 
-                <div class="col-chat">
+                <div class=" col-chat">
                     <div class="my-container-chat h-100">
 
                         <header class="header-chat d-flex align-items-center p-2">
@@ -139,7 +142,7 @@
 
                             <div class="flex-grow-1 ps-2">
                                 <div class="fw-bold">
-                                    Fabio
+                                    ?
                                 </div>
 
                                 <div class="text-body-tertiary">
@@ -165,23 +168,14 @@
 
                         <div class="body-chat px-5 overflow-y-auto pt-5">
 
-                            <div class="sent-mess text-end mb-3">
+                            <div :class="setMessages(elem)" v-for="(elem, i) in contacts[activeIndex].messages"
+                                class="mb-3 p-2">
                                 <div>
-                                    mess
+                                    {{ elem.message }}
                                 </div>
 
-                                <div>
-                                    12.00
-                                </div>
-                            </div>
-
-                            <div class="received-mess text-start mb-3">
-                                <div>
-                                    mess
-                                </div>
-
-                                <div>
-                                    12.00
+                                <div class="date text-body-tertiary">
+                                    {{ elem.date }}
                                 </div>
                             </div>
 
