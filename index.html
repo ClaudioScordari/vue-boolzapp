@@ -134,21 +134,23 @@
                 <div class=" col-chat">
                     <div class="my-container-chat h-100">
 
-                        <header v-for="(elem, i) in contacts" :class="activeIndex == i ? 'd-block' : 'd-none'">
+                        <header>
 
                             <div class="header-chat d-flex align-items-center p-2">
 
                                 <div class="img-prof h-100">
-                                    <img :src="elem.avatar" alt="">
+                                    <img :src="contacts[activeIndex].avatar" alt="">
                                 </div>
 
                                 <div class=" flex-grow-1 ps-2">
                                     <div class="fw-bold">
-                                        {{ elem.name }}
+                                        {{ contacts[activeIndex].name }}
                                     </div>
 
                                     <div class="text-body-tertiary">
-                                        Ultimo accesso oggi alle {{ elem.messages[0].date }}
+                                        Ultimo accesso oggi alle {{
+                                        contacts[activeIndex].messages[contacts[activeIndex].messages.length - 1].date
+                                        }}
                                     </div>
                                 </div>
 
