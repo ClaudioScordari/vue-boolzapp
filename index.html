@@ -134,34 +134,38 @@
                 <div class=" col-chat">
                     <div class="my-container-chat h-100">
 
-                        <header class="header-chat d-flex align-items-center p-2">
+                        <header v-for="(elem, i) in contacts" :class="activeIndex == i ? 'd-block' : 'd-none'">
 
-                            <div class="img-prof h-100">
-                                <img src="img/avatar_2.jpg" alt="">
-                            </div>
+                            <div class="header-chat d-flex align-items-center p-2">
 
-                            <div class="flex-grow-1 ps-2">
-                                <div class="fw-bold">
-                                    ?
+                                <div class="img-prof h-100">
+                                    <img :src="elem.avatar" alt="">
                                 </div>
 
-                                <div class="text-body-tertiary">
-                                    Ultimo accesso oggi alle 12:00
+                                <div class=" flex-grow-1 ps-2">
+                                    <div class="fw-bold">
+                                        {{ elem.name }}
+                                    </div>
+
+                                    <div class="text-body-tertiary">
+                                        Ultimo accesso oggi alle {{ elem.messages[0].date }}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="options-contact">
-                                <span>
-                                    <i class="fa-solid fa-magnifying-glass fs-3" style="color: #c3c6d1;"></i>
-                                </span>
+                                <div class="options-contact">
+                                    <span>
+                                        <i class="fa-solid fa-magnifying-glass fs-3" style="color: #c3c6d1;"></i>
+                                    </span>
 
-                                <span class="mx-3">
-                                    <i class="fa-solid fa-paperclip fs-3" style="color: #c3c6d1;"></i>
-                                </span>
+                                    <span class="mx-3">
+                                        <i class="fa-solid fa-paperclip fs-3" style="color: #c3c6d1;"></i>
+                                    </span>
 
-                                <span class="pe-3">
-                                    <i class="fa-solid fa-ellipsis-vertical fs-3" style=" color: #c3c6d1;"></i>
-                                </span>
+                                    <span class="pe-3">
+                                        <i class="fa-solid fa-ellipsis-vertical fs-3" style=" color: #c3c6d1;"></i>
+                                    </span>
+                                </div>
+
                             </div>
 
                         </header>
@@ -187,7 +191,8 @@
                             </div>
 
                             <div class="flex-grow-1">
-                                <input class="w-100 border-0 py-2" type="text" placeholder="Scrivi un messaggio">
+                                <input @keyup.enter="sendToMessages" v-model="myMessage.message"
+                                    class="w-100 border-0 py-2" type="text" placeholder="Scrivi un messaggio">
                             </div>
 
                             <div class="px-3">

@@ -3,6 +3,11 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            myMessage: {
+                date: this.getNewDate(),
+                message: '',
+                status: 'sent'
+            },
             activeIndex: 0,
             contacts: [
                 {
@@ -180,6 +185,40 @@ createApp({
             } else {
                 return 'received'
             }
+        },
+        sendToMessages() {
+            this.sendMyMessage();
+            this.resetMyMessage();
+            this.receiveNewMessage();
+        },
+        sendMyMessage() {
+            this.contacts[this.activeIndex].messages.push(
+                this.myMessage
+            );
+        },
+        resetMyMessage() {
+            this.myMessage = {
+                date: this.getNewDate(),
+                message: '',
+                status: 'sent'
+            }
+        },
+        receiveNewMessage() {
+            setTimeout(() => {
+                this.contacts[this.activeIndex].messages.push(
+                    {
+                        date: this.getNewDate(),
+                        message: 'ok',
+                        status: 'received'
+                    }
+                );
+            }, 1000);
+        },
+        getNewDate() {
+            return new Date().toLocaleTimeString()
         }
+    },
+    mounted() {
+
     }
 }).mount('#app')
