@@ -89,9 +89,11 @@
                                     <form class="d-flex align-items-center w-100" role="search">
                                         <button class="border-0 bg-light">
                                             <span class="pe-3"><i class="fa-solid fa-magnifying-glass fs-3"
-                                                    style="color: #c3c6d1;"></i></span>
+                                                    style="color: #c3c6d1;"></i>
+                                            </span>
                                         </button>
-                                        <input class="form-control me-2" type="search"
+                                        <input @keyup="getFiltredContacts" v-model="inputLetters"
+                                            class="form-control me-2" type="search"
                                             placeholder="Cerca o inizia una nuova chat" aria-label="Search">
                                     </form>
                                 </div>
@@ -99,7 +101,31 @@
 
                             <div class="list-contacts h-100 overflow-y-auto bg-light">
 
-                                <div @click="setActive(i)" v-for="(elem, i) in contacts"
+                                <div v-if="inputLetters.trim() == ''" @click="setActive(i)"
+                                    v-for="(elem, i) in contacts" :class="i == activeIndex ? 'item-active' : ''"
+                                    class="contact-item d-flex p-2">
+
+                                    <div class="img-prof">
+                                        <img :src="elem.avatar" :alt="elem.name">
+                                    </div>
+
+                                    <div class="name-contact ps-3 flex-grow-1">
+                                        <div class="name fw-bold">
+                                            {{ elem.name }}
+                                        </div>
+
+                                        <div class=" last-message-received
+                                            text-body-tertiary">
+                                            Ultimo messaggio ricevuto
+                                        </div>
+                                    </div>
+
+                                    <div class="last-access text-body-tertiary">
+                                        12:00
+                                    </div>
+
+                                </div>
+                                <div v-else="" @click="setActive(i)" v-for="(elem, i) in arrayFilteredPersons"
                                     :class="i == activeIndex ? 'item-active' : ''" class="contact-item d-flex p-2">
 
                                     <div class="img-prof">

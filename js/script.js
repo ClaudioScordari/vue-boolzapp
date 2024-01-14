@@ -3,6 +3,8 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            arrayFilteredPersons: [],
+            inputLetters: '',
             myMessage: {
                 date: this.getNewDate(),
                 message: '',
@@ -216,9 +218,11 @@ createApp({
         },
         getNewDate() {
             return new Date().toLocaleTimeString()
+        },
+        getFiltredContacts() {
+            this.arrayFilteredPersons = this.contacts.filter(elem => {
+                return elem.name.toLowerCase().includes(this.inputLetters.toLowerCase())
+            })
         }
-    },
-    mounted() {
-
     }
 }).mount('#app')
