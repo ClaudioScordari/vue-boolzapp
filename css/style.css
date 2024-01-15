@@ -116,6 +116,14 @@ nav.navbar {
     flex-direction: column;
 }
 
+.body-chat .dropdown {
+    display: none;
+}
+
+.text-message:hover .dropdown {
+    display: inline-block;
+}
+
 .sent {
     background-color: #D5F9BA;
     align-self: flex-end;

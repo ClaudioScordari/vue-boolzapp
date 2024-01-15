@@ -116,12 +116,12 @@
 
                                         <div class=" last-message-received
                                             text-body-tertiary">
-                                            Ultimo messaggio ricevuto
+                                            {{ elem.messages[elem.messages.length - 1].message }}
                                         </div>
                                     </div>
 
                                     <div class="last-access text-body-tertiary">
-                                        12:00
+                                        {{ elem.messages[elem.messages.length - 1].date }}
                                     </div>
 
                                 </div>
@@ -139,12 +139,12 @@
 
                                         <div class=" last-message-received
                                             text-body-tertiary">
-                                            Ultimo messaggio ricevuto
+                                            {{ elem.messages[elem.messages.length - 1].message }}
                                         </div>
                                     </div>
 
                                     <div class="last-access text-body-tertiary">
-                                        12:00
+                                        {{ elem.messages[elem.messages.length - 1].date }}
                                     </div>
 
                                 </div>
@@ -201,12 +201,30 @@
                         <div class="body-chat px-5 overflow-y-auto pt-5">
 
                             <div :class="setMessages(elem)" v-for="(elem, i) in contacts[activeIndex].messages"
-                                class="mb-3 p-2">
+                                class="text-message mb-3 p-2">
+
                                 <div>
                                     {{ elem.message }}
+
+                                    <div class="dropdown me-1">
+                                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                                            aria-expanded="false" data-bs-offset="10,20">
+                                        </button>
+
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Message info</a></li>
+
+                                            <li @click="deleteMessage(i)">
+                                                <a class="dropdown-item" href="#">
+                                                    Delete message
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
                                 </div>
 
-                                <div class="date text-body-tertiary">
+                                <div class=" date text-body-tertiary">
                                     {{ elem.date }}
                                 </div>
                             </div>

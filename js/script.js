@@ -223,6 +223,10 @@ createApp({
             this.arrayFilteredPersons = this.contacts.filter(elem => {
                 return elem.name.toLowerCase().includes(this.inputLetters.toLowerCase())
             })
+        },
+        deleteMessage(index) {
+            // Passo l'indice dell'oggetto di contacts e da quell'indice rimuovo l'oggetto
+            this.contacts[this.activeIndex].messages.splice(index, 1);
         }
     }
 }).mount('#app')
